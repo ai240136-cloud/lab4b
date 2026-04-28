@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 4b - JSON and jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Check the Console (F12)</h1>
+
+    <script>
+        $(document).ready(function() {
+            // Retrieve and parse the external JSON file [cite: 3, 10]
+            $.getJSON('books.json', function(booksData) {
+                
+                // 1. Title of the first book [cite: 11]
+                console.log("First Book Title: " + booksData.Books[0].title);
+
+                // 2. Author of the second book (Index 1) 
+                console.log("Second Book Author: " + booksData.Books[1].author);
+
+                // 3. Genres of all books [cite: 13]
+                console.log("All Genres:");
+                booksData.Books.forEach(book => {
+                    console.log(book.genres.join(", "));
+                });
+            });
+        });
+    </script>
+</body>
+</html>
